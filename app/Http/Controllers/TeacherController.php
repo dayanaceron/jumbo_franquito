@@ -67,9 +67,10 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
-        //
+        $teacher = Teacher::all();
+        return view('teachers.edit',compact('teacher'));
     }
 
     /**
@@ -79,9 +80,17 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teachers)
     {
-        //
+        $teachers = new Teacher;
+        $teachers->nombre = $request->nombres;
+        $teachers->apellido = $request->apellidos;
+        $teachers->direccion = $request->direccion;
+        $teachers->correo = $request->correo;
+        $teachers->celular = $request->celular;
+        $teachers->nivel_academico = $request->nivel_academico;
+        $teachers->save();
+        return redirect()->route('profesores.index');
     }
 
     /**
