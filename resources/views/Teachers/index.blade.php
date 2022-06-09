@@ -25,14 +25,15 @@
                     <td>{{ $teacher->celular }}</td>
                     <td>{{ $teacher->nivel_academico }}</td>
                     <td>
-                        <a href="{{route('profesores.edit', $teacher) }}" class="btn btn-warning btn-sm" role="button"aria-disabled="true">EDITAR</a>
+                        <a href="{{route('profesores.edit', $teacher->id) }}" class="btn btn-warning btn-sm" role="button"aria-disabled="true">Editar</a>
                     </td>
 
                 <td>
-                    <form action="" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <a href="{{ route('profesores.destroy', $teacher) }}" class="btn btn-danger btn-sm" role="button"aria-disabled="true">ELIMINAR</a>
+                    <form action="{{route('profesores.destroy', $teacher->id)}}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm" >Eliminar</button>  
+            
                     </form>
                     </tr>
             @endforeach

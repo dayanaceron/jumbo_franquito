@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\teacher;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -14,8 +14,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::simplePaginate(4);
+        $teachers = Teacher::simplePaginate(2);
         return view('Teachers.index', compact('teachers'));
+        
     }
 
     /**
@@ -46,15 +47,16 @@ class TeacherController extends Controller
         $teachers->save();
         return redirect()->route('profesores.create');
 
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\teacher  $teacher
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(teacher $teacher)
+    public function show($id)
     {
         //
     }
@@ -62,12 +64,12 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\teacher  $teacher
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
-        $teacher = Teacher::find($id);
+        $teacher = Teacher::all();
         return view('teachers.edit',compact('teacher'));
     }
 
@@ -75,12 +77,12 @@ class TeacherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\teacher  $teacher
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, teacher $teachers, $id)
+    public function update(Request $request, Teacher $teachers)
     {
-        $teacher=Teacher::find($id);
+        $teachers = new Teacher;
         $teachers->nombre = $request->nombres;
         $teachers->apellido = $request->apellidos;
         $teachers->direccion = $request->direccion;
@@ -94,13 +96,11 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\teacher  $teacher
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $teacher=Teacher::findOrFail($id);
-        $teacher->delete();
-        return redirect()->route('profesores.index');
+        //
     }
 }

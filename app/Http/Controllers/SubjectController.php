@@ -14,7 +14,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+     $subjects= Subject::simplePaginate(4);
+     return view('Subjects.index', compact('subjects'));
     }
 
     /**

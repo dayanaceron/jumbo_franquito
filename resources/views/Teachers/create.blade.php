@@ -38,9 +38,9 @@
                 <option value="1">Bachiller académico y/o comercial</option>
                 <option value="2">Tecnico</option>
                 <option value="3">Tecnólogo</option>
-                <option value="3">Profesional</option>
-                <option value="3">Magister</option>
-                <option value="3">Doctorado</option>
+                <option value="4">Profesional</option>
+                <option value="5">Magister</option>
+                <option value="6">Doctorado</option>
               </select>
           </div>
 
